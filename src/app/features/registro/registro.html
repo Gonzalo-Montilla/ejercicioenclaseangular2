@@ -1,0 +1,76 @@
+<div class="form-container">
+  <h2>✨ Formulario de Registro ✨</h2>
+  
+  <form [formGroup]="perfil" (ngSubmit)="enviar()" class="registro-form">
+    <!-- Campo Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input 
+        type="text" 
+        id="nombre"
+        formControlName="nombre" 
+        class="form-input"
+        [class.error]="perfil.get('nombre')?.invalid && perfil.get('nombre')?.touched">
+      <div class="error-message" *ngIf="perfil.get('nombre')?.invalid && perfil.get('nombre')?.touched">
+        <div *ngIf="perfil.get('nombre')?.errors?.['required']">El nombre es requerido.</div>
+        <div *ngIf="perfil.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Campo Apellido -->
+    <div class="form-group">
+      <label for="apellido">Apellido:</label>
+      <input 
+        type="text" 
+        id="apellido"
+        formControlName="apellido" 
+        class="form-input"
+        [class.error]="perfil.get('apellido')?.invalid && perfil.get('apellido')?.touched">
+      <div class="error-message" *ngIf="perfil.get('apellido')?.invalid && perfil.get('apellido')?.touched">
+        <div *ngIf="perfil.get('apellido')?.errors?.['required']">El apellido es requerido.</div>
+        <div *ngIf="perfil.get('apellido')?.errors?.['minlength']">El apellido debe tener al menos 2 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input 
+        type="email" 
+        id="email"
+        formControlName="email" 
+        class="form-input"
+        [class.error]="perfil.get('email')?.invalid && perfil.get('email')?.touched">
+      <div class="error-message" *ngIf="perfil.get('email')?.invalid && perfil.get('email')?.touched">
+        <div *ngIf="perfil.get('email')?.errors?.['required']">El email es requerido.</div>
+        <div *ngIf="perfil.get('email')?.errors?.['email']">Ingrese un email válido.</div>
+      </div>
+    </div>
+
+    <!-- Campo Password -->
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input 
+        type="password" 
+        id="password"
+        formControlName="password" 
+        class="form-input"
+        [class.error]="perfil.get('password')?.invalid && perfil.get('password')?.touched">
+      <div class="error-message" *ngIf="perfil.get('password')?.invalid && perfil.get('password')?.touched">
+        <div *ngIf="perfil.get('password')?.errors?.['required']">La contraseña es requerida.</div>
+        <div *ngIf="perfil.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
+      </div>
+    </div>
+
+    <!-- Botón Submit -->
+    <div class="form-group">
+      <button 
+        type="submit" 
+        class="submit-btn"
+        [disabled]="perfil.invalid">
+        Registrarse
+      </button>
+    </div>
+
+  </form>
+</div>
